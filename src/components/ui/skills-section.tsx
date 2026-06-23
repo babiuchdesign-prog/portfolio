@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const skillsLeft = [
   { name: "Projektowanie grafik reklamowych", value: 98 },
@@ -23,8 +24,11 @@ const skillsRight = [
 ];
 
 const SkillBar = ({ name, value }: { name: string; value: number }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -40px 0px" });
+
   return (
-    <div className="flex flex-col gap-2 mb-6">
+    <div ref={ref} className="flex flex-col gap-2 mb-6">
       <div className="flex justify-between items-center text-sm md:text-base font-medium">
         <span className="text-white">{name}</span>
         <span className="text-[#c17eff]">{value}%</span>
@@ -32,8 +36,7 @@ const SkillBar = ({ name, value }: { name: string; value: number }) => {
       <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
-          whileInView={{ width: `${value}%` }}
-          viewport={{ once: true, margin: "-100px" }}
+          animate={{ width: isInView ? `${value}%` : 0 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="h-full rounded-full bg-gradient-to-r from-[#8a2be2] via-[#b65df0] to-[#e18bfe]"
         />
@@ -41,6 +44,7 @@ const SkillBar = ({ name, value }: { name: string; value: number }) => {
     </div>
   );
 };
+
 
 export function SkillsSection() {
   return (

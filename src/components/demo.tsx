@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import GlowHorizonFM from "@/components/ui/glow-horizon";
 import { AnimatedTitleFM } from "../components/ui/glow-horizon-utils/animated-title-fm";
-import GradientMenu from "@/components/ui/gradient-menu";
 import { Component as GradientBackground4 } from "@/components/ui/gradient-background-4";
 import { FeaturedSpotlight } from "@/components/ui/feature-spotlight";
 import { SkillsSection } from "@/components/ui/skills-section";
@@ -65,27 +64,88 @@ export default function GlowHorizonDemo() {
     <div className="w-full relative bg-black">
       <GradientBackground4 />
       
-      {/* Menu podążające za użytkownikiem */}
-      <GradientMenu className="fixed top-8 left-1/2 -translate-x-1/2 z-50 scale-75 md:scale-100" />
-      
       {/* 1. Sekcja Hero z Animacją */}
       <div className="relative w-full h-screen overflow-hidden flex flex-col items-center justify-center">
         <GlowHorizonFM variant="top" />
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <motion.img 
-            src="/portfolio/logo.svg" 
-            alt="Logo" 
-            className="w-[300px] sm:w-[500px] md:w-[800px] max-w-[90vw] object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]" 
-            initial={{ y: -100, opacity: 0, filter: "blur(15px)", scale: 1.1 }}
-            animate={{ y: 0, opacity: 1, filter: "blur(0px)", scale: 1 }}
-            transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-          />
+          {/* Logo wrapper with arc glow effect */}
+          <div className="relative -mt-32 md:-mt-16">
+            <motion.img 
+              src="/portfolio/logo.svg" 
+              alt="Logo" 
+              className="w-[300px] sm:w-[500px] md:w-[800px] max-w-[90vw] object-contain relative z-10" 
+              initial={{ y: -100, opacity: 0, filter: "blur(15px)", scale: 1.1 }}
+              animate={{ 
+                y: 0, 
+                opacity: 1, 
+                filter: "blur(0px) drop-shadow(0 8px 30px rgba(161,85,255,0.6)) drop-shadow(0 20px 60px rgba(100,30,220,0.4)) drop-shadow(0 0 80px rgba(200,130,255,0.3))", 
+                scale: 1 
+              }}
+              transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+            />
+            {/* Arc glow – masked to logo shape, only on letters */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2.5, delay: 1.5 }}
+              className="absolute inset-0 z-20 pointer-events-none"
+              style={{
+                background: "linear-gradient(to top, rgba(161,85,255,0.9) 0%, rgba(180,100,255,0.5) 35%, transparent 65%)",
+                maskImage: "url('/portfolio/logo.svg')",
+                maskSize: "contain",
+                maskRepeat: "no-repeat",
+                maskPosition: "center",
+                WebkitMaskImage: "url('/portfolio/logo.svg')",
+                WebkitMaskSize: "contain",
+                WebkitMaskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+              }}
+            />
+          </div>
         </div>
+
+        {/* Scroll down button */}
+        <motion.button
+          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 2.5, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 group cursor-pointer"
+          aria-label="Przewiń w dół"
+        >
+          <span className="text-white/40 text-xs uppercase tracking-widest font-medium group-hover:text-white/70 transition-colors duration-300">
+            Przewiń
+          </span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            className="relative flex items-center justify-center w-12 h-12 rounded-full"
+            style={{
+              background: "linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 100%)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              boxShadow: "0 8px 32px rgba(161, 85, 255, 0.2), inset 0 1px 1px rgba(255,255,255,0.2)",
+            }}
+          >
+            {/* Pulse ring */}
+            <motion.span
+              animate={{ scale: [1, 1.6], opacity: [0.4, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+              className="absolute inset-0 rounded-full"
+              style={{ border: "1px solid rgba(161, 85, 255, 0.5)" }}
+            />
+            {/* Arrow */}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </motion.div>
+        </motion.button>
       </div>
 
       {/* 2. Sekcja Spotlight */}
-      <div id="about" className="relative w-full flex items-center justify-center p-8 text-white py-32 my-12">
-        <div className="scale-150 origin-center">
+      <div id="about" className="relative w-full flex items-center justify-center text-white py-16 md:py-32 my-6 md:my-12">
+        <div className="w-full max-w-5xl px-6 md:px-16">
           <FeaturedSpotlight />
         </div>
       </div>
