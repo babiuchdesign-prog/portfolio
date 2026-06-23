@@ -77,7 +77,8 @@ export function FeaturedSpotlight() {
           <img
             src="/portfolio/rafal.jpg"
             alt="Rafał Babiuch"
-            className="w-full h-[260px] object-cover object-top"
+            className="w-full h-[320px] object-cover"
+            style={{ objectPosition: "center 15%" }}
           />
         </div>
 

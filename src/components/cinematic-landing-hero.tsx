@@ -391,32 +391,24 @@ export function CinematicHero({
                     {/* App Interface */}
                     <div className="relative w-full h-full flex flex-col bg-[#050914] overflow-hidden">
                       
-                      {/* LOGIN SCREEN */}
+                      {/* LOGIN SCREEN / MAIN SCREEN */}
                       <div className="login-screen-container absolute inset-0 bg-[#050914] z-10 will-change-transform">
-                        {/* Placeholder for Login Screen Screenshot */}
                         <img 
-                          src="/portfolio/assets/login_placeholder.jpg" 
-                          alt="Login Screen" 
+                          src="/portfolio/assets/plantdex_profile.jpg" 
+                          alt="Plantdex Profile Screen" 
                           className="w-full h-full object-cover" 
                           onError={(e) => { e.currentTarget.style.display = 'none'; }}
                         />
-                        <div className="absolute inset-0 flex items-center justify-center text-white/50 text-sm font-medium text-center px-4" style={{ zIndex: -1 }}>
-                          Tu pojawi się screen logowania
-                        </div>
                       </div>
 
                       {/* SCAN SCREEN */}
                       <div className="scan-screen-container absolute inset-0 bg-[#050914] z-20 will-change-transform" style={{ transform: "translateY(100%)" }}>
-                        {/* Placeholder for Scan Screen Screenshot */}
                         <img 
-                          src="/portfolio/assets/scan_placeholder.jpg" 
-                          alt="Scan Screen" 
+                          src="/portfolio/assets/plantdex_scan.jpg" 
+                          alt="Plantdex Scan Screen" 
                           className="w-full h-full object-cover" 
                           onError={(e) => { e.currentTarget.style.display = 'none'; }}
                         />
-                        <div className="absolute inset-0 flex items-center justify-center text-white/50 text-sm font-medium text-center px-4" style={{ zIndex: -1 }}>
-                          Tu pojawi się screen skanera
-                        </div>
                       </div>
 
                       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[4px] bg-white/50 rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.5)] z-50" />
