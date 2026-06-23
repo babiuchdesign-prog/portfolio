@@ -62,7 +62,7 @@ const INJECTED_STYLES = `
 
   /* Deep Physical Card with Dynamic Mouse Lighting */
   .premium-depth-card {
-      background: linear-gradient(145deg, #162C6D 0%, #0A101D 100%);
+      background: linear-gradient(145deg, #0F4224 0%, #05140A 100%);
       box-shadow: 
           0 40px 100px -20px rgba(0, 0, 0, 0.9),
           0 20px 40px -20px rgba(0, 0, 0, 0.8),
@@ -272,10 +272,19 @@ export function CinematicHero({
         .fromTo(".card-left-text", { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: "power4.out", duration: 1.5 }, "-=1.5")
         .fromTo(".card-right-text", { x: 50, autoAlpha: 0, scale: 0.8 }, { x: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 1.5 }, "<")
         .to({}, { duration: 0.5 })
-        .to(".login-screen-container", { y: "-50%", autoAlpha: 0, duration: 1.5, ease: "power3.inOut" }, "transition")
-        .to(".scan-screen-container", { y: "0%", duration: 1.5, ease: "power3.inOut" }, "transition")
-        .fromTo(".scan-widget", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.08, duration: 1.0, ease: "back.out(1.2)" }, "transition+=0.8")
-        .to(".scan-line", { y: 200, duration: 1.5, repeat: 1, yoyo: true, ease: "sine.inOut" }, "transition+=1.0")
+        // Transition to Screen 2
+        .to(".screen1-container", { y: "-50%", autoAlpha: 0, duration: 1.5, ease: "power3.inOut" }, "trans1")
+        .to(".screen2-container", { y: "0%", duration: 1.5, ease: "power3.inOut" }, "trans1")
+        .to({}, { duration: 0.5 })
+        // Transition to Screen 3
+        .to(".screen2-container", { y: "-50%", autoAlpha: 0, duration: 1.5, ease: "power3.inOut" }, "trans2")
+        .to(".screen3-container", { y: "0%", duration: 1.5, ease: "power3.inOut" }, "trans2")
+        .to({}, { duration: 0.5 })
+        // Transition to Screen 4
+        .to(".screen3-container", { y: "-50%", autoAlpha: 0, duration: 1.5, ease: "power3.inOut" }, "trans3")
+        .to(".screen4-container", { y: "0%", duration: 1.5, ease: "power3.inOut" }, "trans3")
+        .fromTo(".scan-widget", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.08, duration: 1.0, ease: "back.out(1.2)" }, "trans3+=0.8")
+        .to(".scan-line", { y: 200, duration: 1.5, repeat: 1, yoyo: true, ease: "sine.inOut" }, "trans3+=1.0")
         .to({}, { duration: 1.0 })
         .set(".hero-text-wrapper", { autoAlpha: 0 })
         .set(".cta-wrapper", { autoAlpha: 1 }) 
@@ -391,21 +400,41 @@ export function CinematicHero({
                     {/* App Interface */}
                     <div className="relative w-full h-full flex flex-col bg-[#050914] overflow-hidden">
                       
-                      {/* LOGIN SCREEN / MAIN SCREEN */}
-                      <div className="login-screen-container absolute inset-0 bg-[#050914] z-10 will-change-transform">
+                      {/* SCREEN 1 */}
+                      <div className="screen1-container absolute inset-0 bg-[#050914] z-10 will-change-transform">
                         <img 
-                          src="/portfolio/assets/plantdex_profile.jpg" 
-                          alt="Plantdex Profile Screen" 
+                          src="/portfolio/assets/Screenshot_20260612_221427.jpg" 
+                          alt="Plantdex Screen 1" 
                           className="w-full h-full object-cover" 
                           onError={(e) => { e.currentTarget.style.display = 'none'; }}
                         />
                       </div>
 
-                      {/* SCAN SCREEN */}
-                      <div className="scan-screen-container absolute inset-0 bg-[#050914] z-20 will-change-transform" style={{ transform: "translateY(100%)" }}>
+                      {/* SCREEN 2 */}
+                      <div className="screen2-container absolute inset-0 bg-[#050914] z-20 will-change-transform" style={{ transform: "translateY(100%)" }}>
                         <img 
-                          src="/portfolio/assets/plantdex_scan.jpg" 
-                          alt="Plantdex Scan Screen" 
+                          src="/portfolio/assets/Screenshot_20260612_221446.jpg" 
+                          alt="Plantdex Screen 2" 
+                          className="w-full h-full object-cover" 
+                          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                        />
+                      </div>
+
+                      {/* SCREEN 3 */}
+                      <div className="screen3-container absolute inset-0 bg-[#050914] z-30 will-change-transform" style={{ transform: "translateY(100%)" }}>
+                        <img 
+                          src="/portfolio/assets/Screenshot_20260612_221506.jpg" 
+                          alt="Plantdex Screen 3" 
+                          className="w-full h-full object-cover" 
+                          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                        />
+                      </div>
+
+                      {/* SCREEN 4 */}
+                      <div className="screen4-container absolute inset-0 bg-[#050914] z-40 will-change-transform" style={{ transform: "translateY(100%)" }}>
+                        <img 
+                          src="/portfolio/assets/Screenshot_20260612_221550.jpg" 
+                          alt="Plantdex Screen 4" 
                           className="w-full h-full object-cover" 
                           onError={(e) => { e.currentTarget.style.display = 'none'; }}
                         />
