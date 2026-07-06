@@ -242,6 +242,7 @@ export function CinematicHero({
       gsap.set(".main-card", { y: window.innerHeight + 200, autoAlpha: 1 });
       gsap.set([".card-left-text", ".card-right-text", ".mockup-scroll-wrapper", ".floating-badge", ".login-widget", ".scan-widget"], { autoAlpha: 0 });
       gsap.set(".cta-wrapper", { autoAlpha: 0, scale: 0.8, filter: "blur(30px)" });
+      gsap.set(".florium-gap-text", { autoAlpha: 0, y: 50, filter: "blur(10px)" });
 
       const introTl = gsap.timeline({ delay: 0.3 });
       introTl
@@ -263,9 +264,15 @@ export function CinematicHero({
         .to([".hero-text-wrapper", ".bg-grid-theme"], { scale: 1.15, filter: "blur(20px)", opacity: 0.2, ease: "power2.inOut", duration: 2 }, 0)
         .to(".main-card", { y: 0, ease: "power3.inOut", duration: 2 }, 0)
         .to(".main-card", { width: "100%", height: "100%", borderRadius: "0px", ease: "power3.inOut", duration: 1.5 })
+        
+        // ── NEW: Text describing the project during the green space ──
+        .to(".florium-gap-text", { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 1.5, ease: "power3.out" })
+        .to({}, { duration: 2.5 }) // Hold so the user can read it
+        .to(".florium-gap-text", { autoAlpha: 0, y: -50, filter: "blur(10px)", duration: 1.2, ease: "power3.in" })
+        
         .fromTo(".mockup-scroll-wrapper",
           { y: 300, z: -500, rotationX: 50, rotationY: -30, autoAlpha: 0, scale: 0.6 },
-          { y: 0, z: 0, rotationX: 0, rotationY: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 2.5 }, "-=0.8"
+          { y: 0, z: 0, rotationX: 0, rotationY: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 2.5 }, "-=0.2"
         )
         .fromTo(".login-widget", { y: 20, autoAlpha: 0, scale: 0.95 }, { y: 0, autoAlpha: 1, scale: 1, stagger: 0.08, ease: "back.out(1.2)", duration: 1.2 }, "-=1.5")
         .fromTo(".floating-badge", { y: 100, autoAlpha: 0, scale: 0.7, rotationZ: -10 }, { y: 0, autoAlpha: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 }, "-=2.0")
@@ -292,7 +299,8 @@ export function CinematicHero({
         .to([".mockup-scroll-wrapper", ".floating-badge", ".card-left-text", ".card-right-text"], {
           scale: 0.9, y: -40, z: -200, autoAlpha: 0, ease: "power3.in", duration: 1.2, stagger: 0.05,
         })
-        // Responsive card pullback sizing
+        .to(".cta-wrapper", { scale: 1, filter: "blur(0px)", autoAlpha: 1, ease: "power3.out", duration: 1.5 }, "-=0.8")
+        .to({}, { duration: 0.2 })
         .to(".main-card", { 
           width: isMobile ? "92vw" : "85vw", 
           height: isMobile ? "92vh" : "85vh", 
@@ -340,7 +348,7 @@ export function CinematicHero({
           {ctaDescription}
         </p>
         <div className="flex justify-center w-full mt-2">
-          <a href="#" aria-label="Get it on Google Play" className="btn-modern-dark flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-background">
+          <a href="https://play.google.com/store/apps/details?id=com.babiuchdesigndev.plantdex&hl=pl" target="_blank" rel="noopener noreferrer" aria-label="Get it on Google Play" className="btn-modern-dark flex items-center justify-center gap-3 px-8 py-4 rounded-[1.25rem] group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-background">
             {/* Authentic Google Play Store Solid Logo SVG */}
             <svg className="w-7 h-7 transition-transform group-hover:scale-105" fill="currentColor" viewBox="0 0 512 512" aria-hidden="true">
                <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
@@ -360,6 +368,16 @@ export function CinematicHero({
           className="main-card premium-depth-card relative overflow-hidden gsap-reveal flex items-center justify-center pointer-events-auto w-[92vw] md:w-[85vw] h-[92vh] md:h-[85vh] rounded-[32px] md:rounded-[40px]"
         >
           <div className="card-sheen" aria-hidden="true" />
+
+          {/* PROJECT DESCRIPTION GAP TEXT */}
+          <div className="florium-gap-text absolute inset-0 flex flex-col items-center justify-center text-center z-[15] px-6 lg:px-20 pointer-events-none">
+            <h3 className="text-3xl md:text-5xl font-black text-white mb-6">Projekt Florium</h3>
+            <div className="max-w-4xl text-green-100/80 text-sm md:text-lg lg:text-xl font-medium leading-relaxed grid gap-4">
+              <p><strong className="text-white">Cel:</strong> Stworzenie kompleksowej, inteligentnej aplikacji do rozpoznawania i pielęgnacji roślin.</p>
+              <p><strong className="text-white">Wyzwania:</strong> Płynne połączenie zaawansowanych algorytmów AI z nowoczesnym interfejsem (UI/UX) przy zachowaniu wysokiej wydajności.</p>
+              <p><strong className="text-white">Realizacja:</strong> Makiety w programie Figma, implementacja we Flutterze, integracja bazy wiedzy o roślinach oraz wykorzystanie zaawansowanego uczenia maszynowego (AI).</p>
+            </div>
+          </div>
 
           {/* DYNAMIC RESPONSIVE GRID: Flex-col on mobile to force order, Grid on desktop */}
           <div className="relative w-full h-full max-w-7xl mx-auto px-4 lg:px-12 flex flex-col justify-evenly lg:grid lg:grid-cols-3 items-center lg:gap-8 z-10 py-6 lg:py-0">

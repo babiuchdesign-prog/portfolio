@@ -11,6 +11,8 @@ import InteractiveImageBentoGallery from "@/components/ui/bento-gallery";
 import { Footer } from "@/components/ui/modem-animated-footer";
 import { Mail, NotepadTextDashed } from "lucide-react";
 import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import { StickyScrollRevealDemo } from "./sticky-scroll-demo";
+import { PortfolioScrollModule } from "./portfolio-scroll-module";
 
 // Sample data for the image gallery
 const imageItems = [
@@ -155,18 +157,19 @@ export default function GlowHorizonDemo() {
         <SkillsSection />
       </div>
 
-      {/* 4. Sekcja Cinematic Hero (scrolling) */}
+      {/* 4. Sekcja Cinematic Hero (scrolling telefonu - Projekty aplikacji) */}
       <div id="apps" className="relative w-full overflow-x-hidden">
         <CinematicHero />
       </div>
 
-      {/* 5. Sekcja Galeria Bento */}
-      <div id="portfolio" className="relative w-full overflow-x-hidden -mt-[15vh] z-20">
-        <InteractiveImageBentoGallery
-          imageItems={imageItems}
-          title="Wybrane Prace"
-          description="Moje portfolio graficzne i efekty pracy z AI. Przeciągnij, by przewinąć, kliknij, by powiększyć."
-        />
+      {/* 5. Sekcja Nowego Modułu Scroll (zastępuje stary tablet) */}
+      <div id="portfolio-new" className="relative w-full bg-black z-20">
+        <PortfolioScrollModule />
+      </div>
+
+      {/* 6. Sekcja Sticky Scroll (zastępuje wybrane prace) */}
+      <div id="portfolio" className="relative w-full overflow-x-hidden bg-black z-20">
+        <StickyScrollRevealDemo />
       </div>
 
       {/* 6. Animowana Stopka */}
