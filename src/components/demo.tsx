@@ -147,7 +147,7 @@ export default function GlowHorizonDemo() {
 
       {/* 2. Sekcja Spotlight */}
       <div id="about" className="relative w-full flex items-center justify-center text-white py-16 md:py-32 my-6 md:my-12">
-        <div className="w-full max-w-5xl px-6 md:px-16">
+        <div className="w-full max-w-7xl px-6 md:px-16 flex justify-center">
           <FeaturedSpotlight />
         </div>
       </div>
