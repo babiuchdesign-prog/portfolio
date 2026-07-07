@@ -361,7 +361,7 @@ export function PortfolioScrollModule() {
         /* ---------- DEVICE: TABLET ---------- */
         .portfolio-scroll-wrapper .tablet {
           position: absolute;
-          width: min(40vw, 560px);
+          width: min(60vw, 840px);
           z-index: 11;
           will-change: transform, opacity;
           filter: drop-shadow(0 45px 55px rgba(0,0,0,.5)) drop-shadow(0 8px 14px rgba(0,0,0,.35));
@@ -440,7 +440,7 @@ export function PortfolioScrollModule() {
           margin-left: 12vw;
         }
         .portfolio-scroll-wrapper .mini {
-          width: min(15vw, 180px);
+          width: min(22.5vw, 270px);
           will-change: transform;
         }
         .portfolio-scroll-wrapper .mini-frame {
