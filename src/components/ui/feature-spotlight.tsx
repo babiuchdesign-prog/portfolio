@@ -23,12 +23,12 @@ export function FeaturedSpotlight() {
 
   return (
     <div
-      className="group relative flex cursor-pointer flex-col items-center gap-8 md:flex-row md:items-start md:gap-12 lg:gap-16"
+      className="group relative flex cursor-pointer flex-col items-center gap-8 md:flex-row md:items-start md:gap-16 lg:gap-24"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* ===== LEFT / MOBILE TOP: Text Block ===== */}
-      <div className="relative z-10 flex w-full px-6 md:px-0 max-w-full md:max-w-[400px] shrink-0 flex-col items-center text-center md:items-start md:text-left lg:w-[400px] lg:pt-4">
+      <div className="relative z-10 flex w-full px-6 md:px-0 max-w-full md:max-w-[520px] shrink-0 flex-col items-center text-center md:items-start md:text-left lg:w-[520px] lg:pt-4">
 
         {/* Label */}
         <div className="mb-6 flex items-center gap-3 md:mb-8 md:gap-4">
@@ -40,7 +40,7 @@ export function FeaturedSpotlight() {
             }}
           />
           <span
-            className="text-xs font-black uppercase tracking-widest text-white transition-all duration-700 md:text-sm"
+            className="text-xs font-black uppercase tracking-widest text-white transition-all duration-700 md:text-base lg:text-lg"
             style={{
               letterSpacing: isHovered ? "0.15em" : "0.1em",
               transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -53,7 +53,7 @@ export function FeaturedSpotlight() {
         {/* Name */}
         <h2 className="relative">
           <span
-            className="block text-4xl font-normal tracking-tight text-white transition-all duration-700 sm:text-5xl md:text-5xl lg:text-6xl"
+            className="block text-4xl font-normal tracking-tight text-white transition-all duration-700 sm:text-5xl md:text-6xl lg:text-[5.5rem] lg:leading-[1.1]"
             style={{
               transform: isHovered ? "translateY(-2px)" : "translateY(0)",
               transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -62,7 +62,7 @@ export function FeaturedSpotlight() {
             Babiuch
           </span>
           <span
-            className="block text-4xl font-normal tracking-tight text-white transition-all duration-700 sm:text-5xl md:text-5xl lg:text-6xl"
+            className="block text-4xl font-normal tracking-tight text-white transition-all duration-700 sm:text-5xl md:text-6xl lg:text-[5.5rem] lg:leading-[1.1]"
             style={{
               transform: isHovered ? "translateX(12px)" : "translateX(0)",
               transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -84,7 +84,7 @@ export function FeaturedSpotlight() {
 
         {/* Description */}
         <p
-          className="mt-6 text-xs leading-relaxed transition-all duration-700 md:mt-8 md:text-sm lg:mt-10"
+          className="mt-6 text-xs leading-relaxed transition-all duration-700 md:mt-8 md:text-base lg:text-lg lg:mt-12"
           style={{
             color: isHovered ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.5)",
             transform: isHovered ? "translateY(-4px)" : "translateY(0)",
@@ -112,7 +112,7 @@ export function FeaturedSpotlight() {
           {icons.map((icon) => (
             <div
               key={icon}
-              className="group/icon relative flex items-center justify-center h-12 w-12 md:h-10 md:w-10 rounded-xl bg-white/5 border border-white/10 p-2 transition-all hover:bg-white/20 hover:scale-110 hover:-translate-y-1"
+              className="group/icon relative flex items-center justify-center h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 rounded-xl bg-white/5 border border-white/10 p-2 transition-all hover:bg-white/20 hover:scale-110 hover:-translate-y-1"
             >
               <img
                 src={`/portfolio/skills/${icon}`}
@@ -146,7 +146,7 @@ export function FeaturedSpotlight() {
         />
 
         {/* Image */}
-        <div className="relative overflow-hidden md:h-full md:min-h-[400px] md:w-[340px] lg:min-h-[540px] lg:w-[420px]">
+        <div className="relative overflow-hidden md:h-full md:min-h-[520px] md:w-[440px] lg:min-h-[700px] lg:w-[550px]">
           <img
             src="/portfolio/rafal.jpg"
             alt="Rafał Babiuch"
