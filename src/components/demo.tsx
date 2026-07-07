@@ -158,7 +158,7 @@ export default function GlowHorizonDemo() {
       </div>
 
       {/* 4. Sekcja Cinematic Hero (scrolling telefonu - Projekty aplikacji) */}
-      <div id="apps" className="relative w-full overflow-x-hidden">
+      <div id="apps" className="relative w-full overflow-x-hidden -mt-16 md:-mt-32">
         <CinematicHero />
       </div>
 

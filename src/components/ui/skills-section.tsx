@@ -35,7 +35,7 @@ const Counter = ({ value }: { value: number }) => {
 
 export function SkillsSection() {
   return (
-    <div className="w-full max-w-6xl mx-auto px-6 py-20 flex flex-col items-center">
+    <div className="w-full max-w-6xl mx-auto px-6 pt-20 pb-0 flex flex-col items-center">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
