@@ -4,10 +4,10 @@ import { useEffect, useRef } from "react";
 import { motion, useInView, animate } from "framer-motion";
 
 const stats = [
-  { value: 20, label: "Stron WWW", suffix: "+" },
-  { value: 2000, label: "Wygenerowanych zdjęć AI", suffix: "+" },
-  { value: 70, label: "Stworzonych filmików AI", suffix: "+" },
-  { value: 100, label: "Zaangażowania w projekt", suffix: "%" },
+  { value: 10, label: "Lat doświadczenia", suffix: "+" },
+  { value: 500, label: "Zrealizowanych projektów", suffix: "+" },
+  { value: 40, label: "Skrócony czas dzięki AI", suffix: "%" },
+  { value: 2000, label: "Wygenerowanych obrazów AI", suffix: "+" },
 ];
 
 const Counter = ({ value }: { value: number }) => {
