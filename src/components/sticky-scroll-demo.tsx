@@ -106,9 +106,9 @@ const motionVideos = [
 
 const brandImages = [
   "/portfolio/assets/katowice_logo.png",
-  "/portfolio/print-1.jpg",
-  "/portfolio/print-2.png",
-  "/portfolio/digital-2.png",
+  "/portfolio/zdjecia/Digital Flow/52f0a151-104e-4e41-9ee8-017ee484a962_rw_1200.png",
+  "/portfolio/zdjecia/Digital Flow/302e94c4-38e3-410e-b637-7868dea6fc2f_rw_1200.png",
+  "/portfolio/zdjecia/Digital Flow/5efc54b5-1d1d-457b-82b9-1983324cf7bc_rw_1200.png",
 ];
 
 const redesignImages = [
@@ -141,12 +141,12 @@ const content = [
     ),
   },
   {
-    title: "Tożsamość Wizualna",
+    title: "Tozsamosc Wizualna",
     description:
-      "Projektowanie to sztuka budowania silnej i rozpoznawalnej marki poprzez odpowiednią symbolikę. Dobrym przykładem jest projekt logo dla konkursu kulinarnego \"Katowice na talerzu\". Znak ten w sprytny, minimalistyczny sposób łączy najważniejszą ikonę miasta - Spodek - z motywem nakrycia, tworząc wyrazistą identyfikację, która idealnie trafia w klimat wydarzenia.",
+      "Logo to fundament marki - pierwsza rzecz, ktora zapada w pamiec. Projektuje znaki graficzne, ktore nie sa przypadkowe: kazdy ksztalt, kolor i kret pisma sluzy konkretnemu celowi. Lacze symbolike, forme i emocje w jeden spojny znak, ktory wyroznia sie na rynku i buduje trwale skojarzenia z marka.",
     content: (
       <div className="h-full w-full">
-        <ImageSlider images={brandImages} altPrefix="Brand identity" />
+        <ImageSlider images={brandImages} altPrefix="Brand logo" />
       </div>
     ),
   },
