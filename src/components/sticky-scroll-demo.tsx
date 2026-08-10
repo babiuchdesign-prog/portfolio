@@ -130,7 +130,7 @@ const content = [
   {
     title: "Tożsamość Wizualna",
     description:
-      "Projektowanie to sztuka budowania silnej i rozpoznawalnej marki poprzez odpowiednią symbolikę. Dobrym przykładem jest projekt logo dla konkursu kulinarnego „Katowice na talerzu". Znak ten w sprytny, minimalistyczny sposób łączy najważniejszą ikonę miasta – Spodek – z motywem nakrycia, tworząc wyrazistą identyfikację, która idealnie trafia w klimat wydarzenia.",
+      "Projektowanie to sztuka budowania silnej i rozpoznawalnej marki poprzez odpowiednią symbolikę. Dobrym przykładem jest projekt logo dla konkursu kulinarnego \"Katowice na talerzu\". Znak ten w sprytny, minimalistyczny sposób łączy najważniejszą ikonę miasta - Spodek - z motywem nakrycia, tworząc wyrazistą identyfikację, która idealnie trafia w klimat wydarzenia.",
     content: (
       <div className="h-full w-full">
         <ImageSlider images={brandImages} altPrefix="Brand identity" />
