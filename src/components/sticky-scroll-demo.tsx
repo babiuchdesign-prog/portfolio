@@ -92,10 +92,9 @@ function ImageSlider({ images = [], altPrefix = "Slide", videos = [] }: ImageSli
 
 // ─── Zestawy zdjęć dla każdej sekcji (placeholder'y – podmień gdy gotowe) ────
 const aiImages = [
-  "/portfolio/assets/972f41a6-3028-4e72-888a-f6b6e7f8ed05_rw_1920.jpg",
-  "/portfolio/ai-1.jpg",
-  "/portfolio/ai-2.jpg",
-  "/portfolio/digital-1.png",
+  "/portfolio/zdjecia/AI/10568172661419857141.jpg",
+  "/portfolio/zdjecia/AI/6374158172661516807.jpg",
+  "/portfolio/zdjecia/AI/watermarked_img_11510936486312732649.jpg",
 ];
 
 const motionVideos = [
@@ -112,6 +111,7 @@ const brandImages = [
 ];
 
 const printImages = [
+  "/portfolio/assets/podkladka.jpg",
   "/portfolio/zdjecia/Print Works/60cbeaff-21c8-4a63-9853-5906e2a6056a_rw_1920.jpg",
   "/portfolio/zdjecia/Print Works/84efe3dc-510b-406a-9c3d-f89071af654d_rw_1200.png",
   "/portfolio/zdjecia/Print Works/fd9528d4-f89d-48cf-8a6e-d0e783f26611_rw_1920.png",
@@ -122,10 +122,10 @@ const content = [
   {
     title: "Sztuka Wygenerowana przez AI",
     description:
-      "Granice wyobraźni przestały istnieć. Prezentowana obok grafika została w 100% stworzona przy użyciu sztucznej inteligencji. Wykorzystuję zaawansowane modele generatywne do tworzenia unikalnych, potężnych wizualnie konceptów, które wymykają się tradycyjnym schematom i nadają projektom zupełnie nowy wymiar.",
+      "Narzędzia sztucznej inteligencji otwierają zupełnie nowe możliwości twórcze. Dzięki modelom generatywnym potrafię szybko tworzyć unikalne ilustracje, fotorealistyczne wizualizacje wnętrz czy koncepcyjne grafiki lifestylowe. Pozwala to na nieograniczone eksperymentowanie z formą i stylem, dostarczając dedykowane materiały wizualne idealnie dopasowane do potrzeb każdego projektu.",
     content: (
       <div className="h-full w-full">
-        <ImageSlider images={aiImages} altPrefix="AI artwork" />
+        <ImageSlider images={aiImages} altPrefix="AI generated art" />
       </div>
     ),
   },
