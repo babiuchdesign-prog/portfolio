@@ -6,37 +6,55 @@ import { StickyScroll } from "./ui/sticky-scroll-reveal";
 interface ImageSliderProps {
   images: string[];
   altPrefix?: string;
+  video?: string; // opcjonalne wideo jako pierwszy slajd
 }
 
-function ImageSlider({ images, altPrefix = "Slide" }: ImageSliderProps) {
+function ImageSlider({ images, altPrefix = "Slide", video }: ImageSliderProps) {
+  // Jeśli jest wideo, slajd 0 to wideo, reszta to obrazy (indeks i+1)
+  const totalSlides = (video ? 1 : 0) + images.length;
   const [current, setCurrent] = useState(0);
 
   const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % images.length);
-  }, [images.length]);
+    setCurrent((prev) => (prev + 1) % totalSlides);
+  }, [totalSlides]);
 
   const prev = useCallback(() => {
-    setCurrent((prev) => (prev - 1 + images.length) % images.length);
-  }, [images.length]);
+    setCurrent((prev) => (prev - 1 + totalSlides) % totalSlides);
+  }, [totalSlides]);
 
-  // Auto-play co 3.5 sekundy
+  // Auto-play co 4 sekundy
   useEffect(() => {
-    const timer = setInterval(next, 3500);
+    const timer = setInterval(next, 4000);
     return () => clearInterval(timer);
   }, [next]);
 
   return (
     <div className="relative h-full w-full overflow-hidden bg-zinc-900">
-      {/* Zdjęcia */}
-      {images.map((src, i) => (
-        <img
-          key={src}
-          src={src}
-          alt={`${altPrefix} ${i + 1}`}
+      {/* Slajd 0: wideo (jeśli podane) */}
+      {video && (
+        <video
+          src={video}
+          autoPlay
+          loop
+          muted
+          playsInline
           className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
-          style={{ opacity: i === current ? 1 : 0 }}
+          style={{ opacity: current === 0 ? 1 : 0 }}
         />
-      ))}
+      )}
+      {/* Pozostałe slajdy: obrazy */}
+      {images.map((src, i) => {
+        const slideIndex = (video ? 1 : 0) + i;
+        return (
+          <img
+            key={src}
+            src={src}
+            alt={`${altPrefix} ${i + 1}`}
+            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
+            style={{ opacity: slideIndex === current ? 1 : 0 }}
+          />
+        );
+      })}
 
       {/* Strzałki */}
       <button
@@ -56,7 +74,7 @@ function ImageSlider({ images, altPrefix = "Slide" }: ImageSliderProps) {
 
       {/* Kropki nawigacyjne */}
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 z-10">
-        {images.map((_, i) => (
+        {Array.from({ length: totalSlides }).map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
@@ -84,11 +102,11 @@ const aiImages = [
   "/portfolio/digital-1.png",
 ];
 
+const motionVideo = "/portfolio/assets/stworz_wideo_jak_dziewczyna_po.mp4";
 const motionImages = [
-  "/portfolio/ai-1.jpg",       // placeholder 1 – podmień
-  "/portfolio/ai-2.jpg",       // placeholder 2 – podmień
-  "/portfolio/digital-1.png",  // placeholder 3 – podmień
-  "/portfolio/digital-2.png",  // placeholder 4 – podmień
+  "/portfolio/ai-1.jpg",       // placeholder 2 – podmień
+  "/portfolio/ai-2.jpg",       // placeholder 3 – podmień
+  "/portfolio/digital-1.png",  // placeholder 4 – podmień
 ];
 
 const brandImages = [
@@ -120,10 +138,10 @@ const content = [
   {
     title: "Obraz Wprawiony w Ruch",
     description:
-      "Statyczny obraz to często dopiero początek. W tym projekcie najpierw wygenerowałem od zera fotorealistyczne, angażujące zdjęcie promujące za pomocą sztucznej inteligencji, a następnie wprawiłem je w ruch. Tego typu dynamiczne formy wideo perfekcyjnie przyciągają wzrok w kampaniach reklamowych i mediach społecznościowych, dodając marce życia.",
+      "Statyczny obraz to dopiero poczatek. Przekształcam gotowe grafiki i wygenerowane wizualizacje w dynamiczne animacje wideo, ktore zyja własnym życiem. Ruchomy content przyciaga wzrok znacznie skuteczniej niz statyczny kadr - to niezastapione narzedzie w kampaniach social media, reklamach display i prezentacjach produktowych.",
     content: (
       <div className="h-full w-full">
-        <ImageSlider images={motionImages} altPrefix="Motion project" />
+        <ImageSlider images={motionImages} video={motionVideo} altPrefix="Motion project" />
       </div>
     ),
   },
