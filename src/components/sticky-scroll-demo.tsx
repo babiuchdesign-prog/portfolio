@@ -92,30 +92,30 @@ function ImageSlider({ images = [], altPrefix = "Slide", videos = [] }: ImageSli
 
 // ─── Zestawy zdjęć dla każdej sekcji (placeholder'y – podmień gdy gotowe) ────
 const aiImages = [
-  "/portfolio/assets/972f41a6-3028-4e72-888a-f6b6e7f8ed05_rw_1920.jpg",
+  "/assets/972f41a6-3028-4e72-888a-f6b6e7f8ed05_rw_1920.jpg",
   "/portfolio/ai-1.jpg",
   "/portfolio/ai-2.jpg",
   "/portfolio/digital-1.png",
 ];
 
 const motionVideos = [
-  "/portfolio/assets/stworz_wideo_jak_dziewczyna_po.mp4",
-  "/portfolio/assets/nic_nie_mowi_mruga_tylko_neutr.mp4",
-  "/portfolio/assets/A_woman_with_strawberry_blonde.mp4",
+  "/assets/stworz_wideo_jak_dziewczyna_po.mp4",
+  "/assets/nic_nie_mowi_mruga_tylko_neutr.mp4",
+  "/assets/A_woman_with_strawberry_blonde.mp4",
 ];
 
 const brandImages = [
-  "/portfolio/assets/katowice_logo.png",
-  "/portfolio/print-1.jpg",    // placeholder – podmień
-  "/portfolio/print-2.png",    // placeholder – podmień
-  "/portfolio/digital-2.png",  // placeholder – podmień
+  "/assets/katowice_logo.png",
+  "/portfolio/print-1.jpg",
+  "/portfolio/print-2.png",
+  "/portfolio/digital-2.png",
 ];
 
 const redesignImages = [
-  "/portfolio/assets/podkladka.jpg",
-  "/portfolio/print-1.jpg",    // placeholder – podmień
-  "/portfolio/ai-1.jpg",       // placeholder – podmień
-  "/portfolio/digital-1.png",  // placeholder – podmień
+  "/assets/podkladka.jpg",
+  "/portfolio/print-1.jpg",
+  "/portfolio/ai-1.jpg",
+  "/portfolio/digital-1.png",
 ];
 
 // ─── Treść sekcji ────────────────────────────────────────────────────────────
