@@ -111,11 +111,10 @@ const brandImages = [
   "/portfolio/zdjecia/Digital Flow/5efc54b5-1d1d-457b-82b9-1983324cf7bc_rw_1200.png",
 ];
 
-const redesignImages = [
-  "/portfolio/assets/podkladka.jpg",
-  "/portfolio/print-1.jpg",
-  "/portfolio/ai-1.jpg",
-  "/portfolio/digital-1.png",
+const printImages = [
+  "/portfolio/zdjecia/Print Works/60cbeaff-21c8-4a63-9853-5906e2a6056a_rw_1920.jpg",
+  "/portfolio/zdjecia/Print Works/84efe3dc-510b-406a-9c3d-f89071af654d_rw_1200.png",
+  "/portfolio/zdjecia/Print Works/fd9528d4-f89d-48cf-8a6e-d0e783f26611_rw_1920.png",
 ];
 
 // ─── Treść sekcji ────────────────────────────────────────────────────────────
@@ -151,12 +150,12 @@ const content = [
     ),
   },
   {
-    title: "Kreatywna Zmiana Wizerunku",
+    title: "Kompleksowe Projektowanie",
     description:
-      "Projektowanie to sztuka łagodzenia przekazu i znajdowania nieoczywistych rozwiązań. Potrafię tak pokombinować z koncepcją, by nawet z firmy zajmującej się obróbką mięsa wyciągnąć grafikę w 100% przyjazną dla dzieci – taką, która budzi sympatię zamiast straszyć. Urocze ilustracje ocieplają wizerunek marki i całkowicie zmieniają jej odbiór.",
+      "Dobre projektowanie graficzne to nie tylko estetyka, ale przede wszystkim użyteczność. Tworzę szeroki wachlarz materiałów – od publikacji drukowanych, przez identyfikację wizualną, aż po grafiki na potrzeby kampanii w sieci. Niezależnie od medium, dbam o każdy detal, by końcowy projekt niósł ze sobą odpowiedni przekaz i wyróżniał się na tle konkurencji.",
     content: (
       <div className="h-full w-full">
-        <ImageSlider images={redesignImages} altPrefix="Brand redesign" />
+        <ImageSlider images={printImages} altPrefix="Graphic design" />
       </div>
     ),
   },
