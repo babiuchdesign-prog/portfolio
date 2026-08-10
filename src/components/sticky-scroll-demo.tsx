@@ -92,6 +92,7 @@ function ImageSlider({ images = [], altPrefix = "Slide", videos = [] }: ImageSli
 
 // ─── Zestawy zdjęć dla każdej sekcji (placeholder'y – podmień gdy gotowe) ────
 const aiImages = [
+  "/portfolio/assets/972f41a6-3028-4e72-888a-f6b6e7f8ed05_rw_1920.jpg",
   "/portfolio/zdjecia/AI/10568172661419857141.jpg",
   "/portfolio/zdjecia/AI/6374158172661516807.jpg",
   "/portfolio/zdjecia/AI/watermarked_img_11510936486312732649.jpg",
