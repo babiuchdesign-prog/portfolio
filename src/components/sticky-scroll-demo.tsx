@@ -4,14 +4,13 @@ import { StickyScroll } from "./ui/sticky-scroll-reveal";
 
 // ─── Reużywalny slider ───────────────────────────────────────────────────────
 interface ImageSliderProps {
-  images: string[];
+  images?: string[];
   altPrefix?: string;
-  video?: string; // opcjonalne wideo jako pierwszy slajd
+  videos?: string[]; // tablica wideo (kazde wideo = jeden slajd)
 }
 
-function ImageSlider({ images, altPrefix = "Slide", video }: ImageSliderProps) {
-  // Jeśli jest wideo, slajd 0 to wideo, reszta to obrazy (indeks i+1)
-  const totalSlides = (video ? 1 : 0) + images.length;
+function ImageSlider({ images = [], altPrefix = "Slide", videos = [] }: ImageSliderProps) {
+  const totalSlides = videos.length + images.length;
   const [current, setCurrent] = useState(0);
 
   const next = useCallback(() => {
@@ -22,7 +21,6 @@ function ImageSlider({ images, altPrefix = "Slide", video }: ImageSliderProps) {
     setCurrent((prev) => (prev - 1 + totalSlides) % totalSlides);
   }, [totalSlides]);
 
-  // Auto-play co 4 sekundy
   useEffect(() => {
     const timer = setInterval(next, 4000);
     return () => clearInterval(timer);
@@ -30,21 +28,22 @@ function ImageSlider({ images, altPrefix = "Slide", video }: ImageSliderProps) {
 
   return (
     <div className="relative h-full w-full overflow-hidden bg-zinc-900">
-      {/* Slajd 0: wideo (jeśli podane) */}
-      {video && (
+      {/* Slajdy wideo */}
+      {videos.map((src, i) => (
         <video
-          src={video}
+          key={src}
+          src={src}
           autoPlay
           loop
           muted
           playsInline
           className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
-          style={{ opacity: current === 0 ? 1 : 0 }}
+          style={{ opacity: i === current ? 1 : 0 }}
         />
-      )}
-      {/* Pozostałe slajdy: obrazy */}
+      ))}
+      {/* Slajdy obrazy */}
       {images.map((src, i) => {
-        const slideIndex = (video ? 1 : 0) + i;
+        const slideIndex = videos.length + i;
         return (
           <img
             key={src}
@@ -56,23 +55,23 @@ function ImageSlider({ images, altPrefix = "Slide", video }: ImageSliderProps) {
         );
       })}
 
-      {/* Strzałki */}
+      {/* Strzalki */}
       <button
         onClick={prev}
         className="absolute left-3 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white text-xl backdrop-blur-sm transition hover:bg-black/70"
         aria-label="Poprzednie"
       >
-        ‹
+        &lsaquo;
       </button>
       <button
         onClick={next}
         className="absolute right-3 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white text-xl backdrop-blur-sm transition hover:bg-black/70"
-        aria-label="Następne"
+        aria-label="Nastepne"
       >
-        ›
+        &rsaquo;
       </button>
 
-      {/* Kropki nawigacyjne */}
+      {/* Kropki */}
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 z-10">
         {Array.from({ length: totalSlides }).map((_, i) => (
           <button
@@ -82,10 +81,7 @@ function ImageSlider({ images, altPrefix = "Slide", video }: ImageSliderProps) {
             className="h-2 rounded-full transition-all duration-300 focus:outline-none"
             style={{
               width: i === current ? "24px" : "8px",
-              background:
-                i === current
-                  ? "rgba(255,255,255,0.95)"
-                  : "rgba(255,255,255,0.35)",
+              background: i === current ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.35)",
             }}
           />
         ))}
@@ -102,11 +98,10 @@ const aiImages = [
   "/portfolio/digital-1.png",
 ];
 
-const motionVideo = "/portfolio/assets/stworz_wideo_jak_dziewczyna_po.mp4";
-const motionImages = [
-  "/portfolio/ai-1.jpg",       // placeholder 2 – podmień
-  "/portfolio/ai-2.jpg",       // placeholder 3 – podmień
-  "/portfolio/digital-1.png",  // placeholder 4 – podmień
+const motionVideos = [
+  "/portfolio/assets/stworz_wideo_jak_dziewczyna_po.mp4",
+  "/portfolio/assets/nic_nie_mowi_mruga_tylko_neutr.mp4",
+  "/portfolio/assets/A_woman_with_strawberry_blonde.mp4",
 ];
 
 const brandImages = [
@@ -138,10 +133,10 @@ const content = [
   {
     title: "Obraz Wprawiony w Ruch",
     description:
-      "Statyczny obraz to dopiero poczatek. Przekształcam gotowe grafiki i wygenerowane wizualizacje w dynamiczne animacje wideo, ktore zyja własnym życiem. Ruchomy content przyciaga wzrok znacznie skuteczniej niz statyczny kadr - to niezastapione narzedzie w kampaniach social media, reklamach display i prezentacjach produktowych.",
+      "Statyczny obraz to dopiero poczatek. Przeksztalcam gotowe grafiki i wygenerowane wizualizacje w dynamiczne animacje wideo, ktore zyja wlasnym zyciem. Ruchomy content przyciaga wzrok znacznie skuteczniej niz statyczny kadr - to niezastapione narzedzie w kampaniach social media, reklamach display i prezentacjach produktowych.",
     content: (
       <div className="h-full w-full">
-        <ImageSlider images={motionImages} video={motionVideo} altPrefix="Motion project" />
+        <ImageSlider videos={motionVideos} altPrefix="Motion project" />
       </div>
     ),
   },
