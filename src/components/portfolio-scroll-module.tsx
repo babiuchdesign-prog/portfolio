@@ -32,9 +32,7 @@ export function PortfolioScrollModule() {
     const ease = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 
     const captions = [
-      { eyebrow: "01 — PRECYZJA", title: "Nowoczesny design,<br>który hipnotyzuje." },
-      { eyebrow: "02 — ELASTYCZNOŚĆ", title: "Idealne proporcje<br>na każdym urządzeniu." },
-      { eyebrow: "03 — MOC DETALU I AI", title: "Niesamowita precyzja obrazu.<br>Podbijanie detali za pomocą sztucznej inteligencji." },
+      { eyebrow: "PRECYZJA I AI", title: "Niesamowita precyzja obrazu.<br>Podbijanie detali za pomocą sztucznej inteligencji." },
     ];
 
     function setCaption(i: number, opacity: number) {
@@ -59,98 +57,40 @@ export function PortfolioScrollModule() {
       const phase = clamp(Math.floor(rawPhase), 0, 2);
       const local = ease(clamp(rawPhase - phase, 0, 1));
 
-      dots.forEach((d, i) => {
-        if (d) d.classList.toggle("active", i === phase);
-      });
+      // Wszystkie elementy widoczne od razu, animowane tylko przy scrollowaniu
+      const fadeIn = clamp(p * 4, 0, 1);
 
-      // FAZA 0
-      const inX = lerp(70, 0, clamp(local * 2.2, 0, 1));
-      const inRot = lerp(22, 0, clamp(local * 2.2, 0, 1));
-      const inOp = clamp(local * 3, 0, 1);
-
-      let laptopOp, laptopX, laptopRot, laptopScale;
-      if (phase === 0) {
-        laptopOp = inOp;
-        laptopX = inX;
-        laptopRot = inRot;
-        laptopScale = 1;
-      } else if (phase === 1) {
-        const out = clamp(local * 2.5, 0, 1);
-        laptopOp = 1 - out;
-        laptopX = -out * 10;
-        laptopRot = -out * 8;
-        laptopScale = 1 - out * 0.05;
-      } else {
-        laptopOp = 0;
-        laptopX = -10;
-        laptopRot = -8;
-        laptopScale = 0.95;
-      }
+      // LAPTOP
       if (laptop) {
-        laptop.style.opacity = laptopOp.toString();
-        laptop.style.transform = `translateX(${laptopX}%) rotateY(${laptopRot}deg) scale(${laptopScale})`;
+        laptop.style.opacity = fadeIn.toString();
+        laptop.style.transform = `translateX(${lerp(30, 0, fadeIn)}%) rotateY(${lerp(12, 0, fadeIn)}deg) scale(1)`;
       }
 
-      // FAZA 1
-      let tabletOp, tabletY, tabletScale, contentY;
-      if (phase === 0) {
-        tabletOp = 0;
-        tabletY = 30;
-        tabletScale = 0.92;
-        contentY = 0;
-      } else if (phase === 1) {
-        const inT = clamp(local * 2.5, 0, 1);
-        tabletOp = inT;
-        tabletY = lerp(30, 0, inT);
-        tabletScale = lerp(0.92, 1, inT);
-        const scrollT = clamp((local - 0.35) / 0.65, 0, 1);
-        contentY = -scrollT * 46;
-      } else {
-        const out = clamp(local * 2.5, 0, 1);
-        tabletOp = 1 - out;
-        tabletY = -out * 20;
-        tabletScale = 1 - out * 0.05;
-        contentY = -46 - out * 6;
-      }
+      // TABLET
       if (tablet) {
-        tablet.style.opacity = tabletOp.toString();
-        tablet.style.transform = `translateY(${tabletY}px) scale(${tabletScale})`;
+        tablet.style.opacity = fadeIn.toString();
+        tablet.style.transform = `translateY(${lerp(30, 0, fadeIn)}px) scale(1)`;
       }
       if (tabletContent) {
-        tabletContent.style.transform = `translateY(${contentY}%)`;
+        tabletContent.style.transform = `translateY(0%)`;
       }
 
-      // FAZA 2
-      let trioOp, trioY;
+      // TRIO
       if (trio) {
         const minis = trio.querySelectorAll(".mini") as NodeListOf<HTMLElement>;
-        if (phase < 2) {
-          trioOp = 0;
-          trioY = 60;
-          minis.forEach((m) => (m.style.transform = "translateY(0) rotate(0deg)"));
-        } else {
-          const inTr = clamp(local * 2.2, 0, 1);
-          trioOp = inTr;
-          trioY = lerp(60, 0, inTr);
-          const rots = [-8, 0, 8];
-          minis.forEach((m, i) => {
-            const delay = clamp((inTr - i * 0.12) / (1 - i * 0.12), 0, 1);
-            m.style.transform = `translateY(${lerp(40, 0, delay)}px) rotate(${lerp(0, rots[i], delay)}deg)`;
-            m.style.opacity = delay.toString();
-          });
-        }
-        trio.style.opacity = trioOp.toString();
-        trio.style.transform = `translateY(${trioY}px)`;
+        const trioFade = clamp((p - 0.15) * 3, 0, 1);
+        trio.style.opacity = trioFade.toString();
+        trio.style.transform = `translateY(${lerp(40, 0, trioFade)}px)`;
+        const rots = [-8, 0, 8];
+        minis.forEach((m, i) => {
+          const delay = clamp((trioFade - i * 0.12) / (1 - i * 0.12), 0, 1);
+          m.style.transform = `translateY(${lerp(20, 0, delay)}px) rotate(${lerp(0, rots[i], delay)}deg)`;
+          m.style.opacity = delay.toString();
+        });
       }
 
       // CAPTION
-      const capOp =
-        phase === 0
-          ? clamp(local * 2, 0, 1)
-          : phase === 1
-          ? clamp(Math.min(local * 2, (1 - local) * 4), 0, 1)
-          : clamp(local * 2, 0, 1);
-      setCaption(phase, capOp);
+      setCaption(0, fadeIn);
     }
 
     let ticking = false;
@@ -205,7 +145,7 @@ export function PortfolioScrollModule() {
         /* ---------- STAGE ---------- */
         .portfolio-scroll-wrapper .stage {
           position: relative;
-          height: 420vh;
+          height: 200vh;
         }
 
         .portfolio-scroll-wrapper .stage-sticky {
@@ -497,7 +437,7 @@ export function PortfolioScrollModule() {
 
         @media (max-width: 768px) {
           .portfolio-scroll-wrapper .stage {
-            height: 220vh;
+            height: 150vh;
           }
           .portfolio-scroll-wrapper .caption {
             position: relative;

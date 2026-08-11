@@ -118,6 +118,13 @@ const printImages = [
   "/portfolio/zdjecia/Print Works/fd9528d4-f89d-48cf-8a6e-d0e783f26611_rw_1920.png",
 ];
 
+const webImages = [
+  "/portfolio/assets/mikea.png",
+  "/portfolio/assets/skankolor.png",
+  "/portfolio/zdjecia/Digital Flow/1fbcb55e-9bd4-45dc-8c15-92fe5fd90f53_rw_1920.png",
+  "/portfolio/zdjecia/Digital Flow/e80b467e-e8c1-4c12-86dd-7e009061c886_rw_1920.jpg",
+];
+
 // ─── Treść sekcji ────────────────────────────────────────────────────────────
 const content = [
   {
@@ -157,6 +164,16 @@ const content = [
     content: (
       <div className="h-full w-full">
         <ImageSlider images={printImages} altPrefix="Graphic design" />
+      </div>
+    ),
+  },
+  {
+    title: "Projektowanie Stron WWW",
+    description:
+      "Nowoczesna strona internetowa to wizytówka każdej marki w cyfrowym świecie. Projektuję responsywne, szybkie i estetyczne witryny, które nie tylko przyciągają wzrok, ale przede wszystkim realizują cele biznesowe. Od landing page'y, przez rozbudowane serwisy firmowe, aż po sklepy internetowe – każdy projekt dopasowuję do indywidualnych potrzeb klienta, dbając o intuicyjną nawigację i najwyższe standardy UX.",
+    content: (
+      <div className="h-full w-full">
+        <ImageSlider images={webImages} altPrefix="Web design" />
       </div>
     ),
   },
