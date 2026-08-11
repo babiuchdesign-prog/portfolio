@@ -64,23 +64,23 @@ export const StickyScroll = ({
       ref={ref}
     >
       {/* Każda sekcja zajmuje 100vh – dzięki temu scroll "zatrzymuje się" na każdej */}
-      <div className="max-w-7xl mx-auto px-8 md:px-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-16">
         {content.map((item, index) => (
           <div
             key={item.title + index}
-            className="relative flex flex-col lg:flex-row items-center gap-16 min-h-screen py-32"
+            className="relative flex flex-col lg:flex-row items-center gap-8 lg:gap-16 min-h-screen py-16 lg:py-32"
           >
-            {/* Tekst po lewej */}
-            <div className="flex-1 max-w-lg">
+            {/* Tekst – na mobile wycentrowany, na desktop po lewej */}
+            <div className="flex-1 max-w-lg text-center lg:text-left">
               <motion.h2
                 animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="text-3xl font-bold text-white mb-6"
+                className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6"
               >
                 {item.title}
               </motion.h2>
               <motion.p
                 animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="text-slate-300 text-lg leading-relaxed"
+                className="text-slate-300 text-base md:text-lg leading-relaxed"
               >
                 {item.description}
               </motion.p>
@@ -89,10 +89,10 @@ export const StickyScroll = ({
             {/* Obrazek/kontent po prawej – sticky na desktopu */}
             <div
               className={cn(
-                "flex-1 lg:sticky lg:top-[20vh] h-[280px] lg:h-[50vh] w-full rounded-2xl overflow-hidden shadow-2xl",
+                "flex-1 lg:sticky lg:top-[20vh] h-[55vw] sm:h-[45vw] lg:h-[50vh] w-full rounded-2xl overflow-hidden shadow-2xl",
                 contentClassName
               )}
-              style={{ background: backgroundGradient }}
+              style={{ background: item.content ? "transparent" : backgroundGradient }}
             >
               {item.content ?? null}
             </div>
