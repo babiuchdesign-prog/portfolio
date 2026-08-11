@@ -89,10 +89,9 @@ export const StickyScroll = ({
             {/* Obrazek/kontent po prawej – sticky na desktopu */}
             <div
               className={cn(
-                "flex-1 lg:sticky lg:top-[20vh] h-[55vw] sm:h-[45vw] lg:h-[50vh] w-full rounded-2xl overflow-hidden shadow-2xl",
+                "flex-1 lg:sticky lg:top-[20vh] h-[55vw] sm:h-[45vw] lg:h-[50vh] w-full rounded-2xl overflow-hidden shadow-2xl bg-zinc-900",
                 contentClassName
               )}
-              style={{ background: item.content ? "transparent" : backgroundGradient }}
             >
               {item.content ?? null}
             </div>
