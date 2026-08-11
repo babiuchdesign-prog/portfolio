@@ -12,7 +12,6 @@ import { Footer } from "@/components/ui/modem-animated-footer";
 import { Mail, NotepadTextDashed } from "lucide-react";
 import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import { StickyScrollRevealDemo } from "./sticky-scroll-demo";
-import { PortfolioScrollModule } from "./portfolio-scroll-module";
 
 // Sample data for the image gallery
 const imageItems = [
@@ -162,10 +161,7 @@ export default function GlowHorizonDemo() {
         <CinematicHero />
       </div>
 
-      {/* 5. Sekcja Nowego Modułu Scroll (zastępuje stary tablet) */}
-      <div id="portfolio-new" className="relative w-full bg-black z-20">
-        <PortfolioScrollModule />
-      </div>
+
 
       {/* 6. Sekcja Sticky Scroll (zastępuje wybrane prace) */}
       <div id="portfolio" className="relative w-full overflow-x-hidden bg-black z-20">
