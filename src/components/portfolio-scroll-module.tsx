@@ -79,8 +79,13 @@ export function PortfolioScrollModule() {
       if (trio) {
         const minis = trio.querySelectorAll(".mini") as NodeListOf<HTMLElement>;
         const trioFade = clamp((p - 0.15) * 3, 0, 1);
+        const isMobile = window.innerWidth <= 768;
+        
         trio.style.opacity = trioFade.toString();
-        trio.style.transform = `translateY(${lerp(40, 0, trioFade)}px)`;
+        trio.style.transform = isMobile 
+          ? `translateY(${lerp(40, 0, trioFade)}px)`
+          : `translateX(-50%) translateY(${lerp(40, 0, trioFade)}px) scale(1.1)`;
+        
         const rots = [-8, 0, 8];
         minis.forEach((m, i) => {
           const delay = clamp((trioFade - i * 0.12) / (1 - i * 0.12), 0, 1);
@@ -90,7 +95,10 @@ export function PortfolioScrollModule() {
       }
 
       // CAPTION
-      setCaption(0, fadeIn);
+      if (caption) {
+        caption.style.opacity = fadeIn.toString();
+        caption.style.transform = `translateX(-50%) translateY(${lerp(16, 0, fadeIn)}px)`;
+      }
     }
 
     let ticking = false;
@@ -165,12 +173,13 @@ export function PortfolioScrollModule() {
         /* caption */
         .portfolio-scroll-wrapper .caption {
           position: absolute;
-          left: 6%;
-          top: 12%;
-          max-width: 340px;
+          top: 8%;
+          left: 50%;
+          transform: translateX(-50%) translateY(16px);
+          max-width: 600px;
+          text-align: center;
           z-index: 20;
           opacity: 0;
-          transform: translateY(16px);
           pointer-events: none;
         }
         .portfolio-scroll-wrapper .caption .eyebrow {
@@ -373,11 +382,12 @@ export function PortfolioScrollModule() {
         /* ---------- TRIO ---------- */
         .portfolio-scroll-wrapper .trio {
           position: absolute;
+          left: 50%;
           display: flex;
           gap: 40px;
           z-index: 12;
           will-change: transform, opacity;
-          margin-left: 12vw;
+          margin-top: 5vh;
         }
         .portfolio-scroll-wrapper .mini {
           width: min(22.5vw, 270px);
@@ -478,6 +488,8 @@ export function PortfolioScrollModule() {
             width: 90vw;
             top: auto;
             bottom: auto;
+            left: auto;
+            margin-top: 0;
             display: flex !important;
             flex-direction: column;
             gap: 20px;
@@ -522,6 +534,11 @@ export function PortfolioScrollModule() {
             </div>
 
 
+
+            <div className="caption" ref={captionRef}>
+              <p className="eyebrow" ref={capEyebrowRef}>PRECYZJA I AI</p>
+              <h2 ref={capTitleRef}>Niesamowita precyzja obrazu.<br />Podbijanie detali za pomocą sztucznej inteligencji.</h2>
+            </div>
 
             {/* TRIO */}
             <div className="trio" ref={trioRef}>
