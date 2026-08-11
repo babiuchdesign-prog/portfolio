@@ -89,7 +89,9 @@ export const StickyScroll = ({
             {/* Obrazek/kontent po prawej – sticky na desktopu */}
             <div
               className={cn(
-                "flex-1 lg:sticky lg:top-[20vh] h-[55vw] sm:h-[45vw] lg:h-[50vh] w-full rounded-2xl overflow-hidden shadow-2xl bg-zinc-900",
+                "w-full rounded-2xl overflow-hidden shadow-2xl bg-zinc-900 relative",
+                "h-[120vw] sm:h-[80vw]", // Taller on mobile
+                "lg:sticky lg:top-[20vh] lg:flex-1 lg:h-[50vh]", // Desktop behavior
                 contentClassName
               )}
             >
