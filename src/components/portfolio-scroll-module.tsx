@@ -469,22 +469,24 @@ export function PortfolioScrollModule() {
             padding-top: 50px;
             padding-bottom: 20px;
             gap: 12px;
-          }
-          .portfolio-scroll-wrapper .laptop {
-            position: relative;
-            width: 88vw;
-            top: auto;
-            bottom: auto;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,.4));
-          }
-          .portfolio-scroll-wrapper .tablet {
-            position: relative;
-            width: 75vw;
-            top: auto;
-            bottom: auto;
+            height: auto;
+            min-height: 100vh;
+            overflow: visible;
           }
           .portfolio-scroll-wrapper .trio {
-            display: none !important;
+            position: relative;
+            width: 90vw;
+            top: auto;
+            bottom: auto;
+            display: flex !important;
+            flex-direction: column;
+            gap: 20px;
+          }
+          .portfolio-scroll-wrapper .mini {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 9/16;
+            margin-bottom: 20px;
           }
           .portfolio-scroll-wrapper .dots {
             display: none;
@@ -519,47 +521,7 @@ export function PortfolioScrollModule() {
               <h2 ref={capTitleRef}>Twoja strona,<br />gotowa do pokazania.</h2>
             </div>
 
-            {/* LAPTOP */}
-            <div className="laptop" ref={laptopRef}>
-              <div className="laptop-body">
-                <div className="laptop-screen">
-                  <div className="laptop-cam"></div>
-                  <div className="laptop-bezel">
-                    <div className="laptop-viewport">
-                      <div className="screen-glare"></div>
-                      <img
-                        src="/portfolio/assets/mikea.png"
-                        alt="Mikea Preview"
-                        className="absolute inset-0 w-full h-full object-cover z-10"
-                        style={{ borderRadius: "2px", objectPosition: "top" }}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="laptop-hinge"></div>
-                <div className="laptop-base">
-                  <div className="keyboard-deck"></div>
-                  <div className="trackpad"></div>
-                </div>
-              </div>
-            </div>
 
-            {/* TABLET */}
-            <div className="tablet" ref={tabletRef}>
-              <div className="tablet-frame">
-                <div className="tablet-btn power"></div>
-                <div className="tablet-btn vol"></div>
-                <div className="tablet-viewport">
-                  <div className="screen-glare"></div>
-                  <img
-                    src="/portfolio/assets/skankolor.png"
-                    alt="Skankolor"
-                    className="absolute inset-0 w-full h-full object-cover z-10"
-                    style={{ borderRadius: "2px", objectPosition: "top" }}
-                  />
-                </div>
-              </div>
-            </div>
 
             {/* TRIO */}
             <div className="trio" ref={trioRef}>
