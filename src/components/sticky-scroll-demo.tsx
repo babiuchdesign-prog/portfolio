@@ -133,7 +133,7 @@ const content = [
   {
     title: "Obraz Wprawiony w Ruch",
     description:
-      "Statyczny obraz to dopiero poczatek. Przeksztalcam gotowe grafiki i wygenerowane wizualizacje w dynamiczne animacje wideo, ktore zyja wlasnym zyciem. Ruchomy content przyciaga wzrok znacznie skuteczniej niz statyczny kadr - to niezastapione narzedzie w kampaniach social media, reklamach display i prezentacjach produktowych.",
+      "Statyczny obraz to dopiero początek. Przekształcam gotowe grafiki i wygenerowane wizualizacje w dynamiczne animacje wideo, które żyją własnym życiem. Ruchomy content przyciąga wzrok znacznie skuteczniej niż statyczny kadr – to niezastąpione narzędzie w kampaniach social media, reklamach display i prezentacjach produktowych.",
     content: (
       <div className="h-full w-full">
         <ImageSlider videos={motionVideos} altPrefix="Motion project" />
@@ -141,9 +141,9 @@ const content = [
     ),
   },
   {
-    title: "Tozsamosc Wizualna",
+    title: "Tożsamość Wizualna",
     description:
-      "Logo to fundament marki - pierwsza rzecz, ktora zapada w pamiec. Projektuje znaki graficzne, ktore nie sa przypadkowe: kazdy ksztalt, kolor i kret pisma sluzy konkretnemu celowi. Lacze symbolike, forme i emocje w jeden spojny znak, ktory wyroznia sie na rynku i buduje trwale skojarzenia z marka.",
+      "Logo to fundament marki – pierwsza rzecz, która zapada w pamięć. Projektuję znaki graficzne, które nie są przypadkowe: każdy kształt, kolor i krój pisma służy konkretnemu celowi. Łączę symbolikę, formę i emocje w jeden spójny znak, który wyróżnia się na rynku i buduje trwałe skojarzenia z marką.",
     content: (
       <div className="h-full w-full">
         <ImageSlider images={brandImages} altPrefix="Brand logo" />
