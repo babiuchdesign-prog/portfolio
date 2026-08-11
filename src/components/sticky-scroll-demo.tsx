@@ -119,10 +119,7 @@ const printImages = [
 ];
 
 const webImages = [
-  "/portfolio/assets/mikea.png",
-  "/portfolio/assets/skankolor.png",
-  "/portfolio/zdjecia/Digital Flow/1fbcb55e-9bd4-45dc-8c15-92fe5fd90f53_rw_1920.png",
-  "/portfolio/zdjecia/Digital Flow/e80b467e-e8c1-4c12-86dd-7e009061c886_rw_1920.jpg",
+  "/portfolio/assets/under_construction.png",
 ];
 
 // ─── Treść sekcji ────────────────────────────────────────────────────────────
