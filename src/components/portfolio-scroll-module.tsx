@@ -497,7 +497,7 @@ export function PortfolioScrollModule() {
 
         @media (max-width: 768px) {
           .portfolio-scroll-wrapper .stage {
-            height: 320vh;
+            height: 220vh;
           }
           .portfolio-scroll-wrapper .caption {
             position: relative;
@@ -510,26 +510,36 @@ export function PortfolioScrollModule() {
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            margin-bottom: 24px;
+            margin-bottom: 0;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+          .portfolio-scroll-wrapper .caption .eyebrow {
+            margin-bottom: 6px;
+            font-size: 11px;
           }
           .portfolio-scroll-wrapper .caption h2 {
-            font-size: 24px;
+            font-size: 22px;
+            line-height: 1.25;
           }
           .portfolio-scroll-wrapper .stage-sticky {
             flex-direction: column;
-            justify-content: flex-start;
-            padding-top: 80px;
-            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            padding-top: 50px;
+            padding-bottom: 20px;
+            gap: 12px;
           }
           .portfolio-scroll-wrapper .laptop {
             position: relative;
-            width: 92vw;
+            width: 88vw;
             top: auto;
             bottom: auto;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,.4));
           }
           .portfolio-scroll-wrapper .tablet {
             position: relative;
-            width: 88vw;
+            width: 75vw;
             top: auto;
             bottom: auto;
           }
